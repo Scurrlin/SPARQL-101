@@ -50,6 +50,6 @@ for track in playlist['tracks']['items']:
     g.add((track_uri, SCHEMA.inAlbum, album_uri))
     g.add((album_uri, SCHEMA.name, Literal(track_info['album']['name'])))
     
-g.serialize(destination="playlist.rdf", format="turtle")
+g.serialize(destination="wedding_playlist.rdf", format="turtle")
 
-print("RDF data generated and saved to playlist.rdf")
+print("RDF data generated and saved to wedding_playlist.rdf")
