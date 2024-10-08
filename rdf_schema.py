@@ -1,5 +1,5 @@
 import spotipy
-from spotipy.oauth2 import SporifyOAuth
+from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 import os
 from rdflib import Graph, URIRef, Literal, Namesapce
