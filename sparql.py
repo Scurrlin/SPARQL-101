@@ -4,48 +4,54 @@ from rdflib import Graph
 g = Graph()
 g.parse("wedding_playlist.rdf", format="turtle")
 
-def convert_duration(ms):
-    minutes = ms // 60000
-    seconds = (ms % 60000) // 1000
+# Helper Functions
+
+def convert_duration(duration_str):
+    minutes, seconds = map(int, duration_str.split(":"))
     return f"{minutes} minutes, {seconds} seconds"
 
 def get_all_artists():
     query = """
     SELECT DISTINCT ?artistName
     WHERE {
-        ?track a schema:MusicRecording;
-        	schema:byArtist ?artist.
-        ?artist schema:name ?artistName.
+        ?track a schema1:MusicRecording;
+            schema1:byArtist ?artist.
+        ?artist schema1:name ?artistName.
     }
     ORDER BY ASC(?artistName)
     """
     results = g.query(query)
     return [str(row.artistName) for row in results]
 
-# 1.) Get the total playlist duration in minutes and seconds
+# 1. Get the total playlist duration
 # CLI Command: python3 sparql.py --query duration
 
 def get_total_duration():
     query = """
-    SELECT (SUM(?duration) AS ?totalDuration)
+    SELECT ?duration
     WHERE {
-        ?track a schema:MusicRecording;
-            schema:duration ?duration.
+        ?track a schema1:MusicRecording;
+            schema1:duration ?duration.
     }
     """
+    total_duration_seconds = 0
     results = g.query(query)
     for row in results:
-        total_duration_ms = int(row.totalDuration)
-        print(f"Total Playlist Duration: {convert_duration(total_duration_ms)}")
+        minutes, seconds = map(int, row.duration.split(":"))
+        total_duration_seconds += minutes * 60 + seconds
 
-# 2.) Get the total number of songs in the playlist
+    total_minutes = total_duration_seconds // 60
+    total_seconds = total_duration_seconds % 60
+    print(f"Total Playlist Duration: {total_minutes} minutes, {total_seconds} seconds")
+
+# 2. Get the total number of songs in the playlist
 # CLI Command: python3 sparql.py --query total_songs
 
 def get_total_songs():
     query = """
     SELECT (COUNT(?track) AS ?totalSongs)
     WHERE {
-        ?track a schema:MusicRecording.
+        ?track a schema1:MusicRecording.
     }
     """
     results = g.query(query)
@@ -59,9 +65,9 @@ def get_songs_sorted_by_length():
     query = """
     SELECT ?songTitle ?duration
     WHERE {
-        ?track a schema:MusicRecording;
-            schema:name ?songTitle;
-            schema:duration ?duration.
+        ?track a schema1:MusicRecording;
+            schema1:name ?songTitle;
+            schema1:duration ?duration.
     }
     ORDER BY DESC(?duration)
     """
@@ -76,9 +82,9 @@ def get_longest_song():
     query = """
     SELECT ?songTitle ?duration
     WHERE {
-        ?track a schema:MusicRecording;
-            schema:name ?songTitle;
-            schema:duration ?duration.
+        ?track a schema1:MusicRecording;
+            schema1:name ?songTitle;
+            schema1:duration ?duration.
     }
     ORDER BY DESC(?duration)
     LIMIT 1
@@ -94,9 +100,9 @@ def get_shortest_song():
     query = """
     SELECT ?songTitle ?duration
     WHERE {
-        ?track a schema:MusicRecording;
-            schema:name ?songTitle;
-            schema:duration ?duration.
+        ?track a schema1:MusicRecording;
+            schema1:name ?songTitle;
+            schema1:duration ?duration.
     }
     ORDER BY ASC(?duration)
     LIMIT 1
@@ -112,9 +118,9 @@ def get_songs_longer_than(duration):
     query = f"""
     SELECT ?songTitle ?duration
     WHERE {{
-        ?track a schema:MusicRecording;
-            schema:name ?songTitle;
-            schema:duration ?duration.
+        ?track a schema1:MusicRecording;
+            schema1:name ?songTitle;
+            schema1:duration ?duration.
         FILTER (?duration > "{duration}")
     }}
     """
@@ -129,10 +135,10 @@ def get_songs_grouped_by_album():
     query = """
     SELECT ?albumTitle ?songTitle
     WHERE {
-        ?track a schema:MusicRecording;
-            schema:name ?songTitle;
-            schema:inAlbum ?album.
-        ?album schema:name ?albumTitle.
+        ?track a schema1:MusicRecording;
+            schema1:name ?songTitle;
+            schema1:inAlbum ?album.
+        ?album schema1:name ?albumTitle.
     }
     ORDER BY ?albumTitle
     """
@@ -147,10 +153,10 @@ def get_songs_grouped_by_artist():
     query = """
     SELECT ?artistName ?songTitle
     WHERE {
-        ?track a schema:MusicRecording;
-            schema:name ?songTitle;
-            schema:byArtist ?artist.
-        ?artist schema:name ?artistName.
+        ?track a schema1:MusicRecording;
+            schema1:name ?songTitle;
+            schema1:byArtist ?artist.
+        ?artist schema1:name ?artistName.
     }
     ORDER BY ?artistName
     """
@@ -165,9 +171,9 @@ def get_artists_by_appearance():
     query = """
     SELECT ?artistName (COUNT(?track) AS ?numSongs)
     WHERE {
-        ?track a schema:MusicRecording;
-            schema:byArtist ?artist.
-        ?artist schema:name ?artistName.
+        ?track a schema1:MusicRecording;
+            schema1:byArtist ?artist.
+        ?artist schema1:name ?artistName.
     }
     GROUP BY ?artistName
     ORDER BY DESC(?numSongs)
@@ -190,10 +196,10 @@ def get_songs_by_artist():
     query = f"""
     SELECT ?songTitle
     WHERE {{
-        ?track a schema:MusicRecording;
-            schema:name ?songTitle;
-            schema:byArtist ?artist.
-        ?artist schema:name "{selected_artist}".
+        ?track a schema1:MusicRecording;
+            schema1:name ?songTitle;
+            schema1:byArtist ?artist.
+        ?artist schema1:name "{selected_artist}".
     }}
     """
     results = g.query(query)
