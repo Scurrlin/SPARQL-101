@@ -33,5 +33,5 @@ for track in playlist['tracks']['items']:
     print(f"Track Name: {track_info['name']}")
     print(f"Artist: {track_info['artists'][0]['name']}")
     print(f"Album: {track_info['album']['name']}")
-    print(f"Duration: {track_duration} (mm:ss)")
+    print(f"Duration: {track_duration}")
     print('---')
