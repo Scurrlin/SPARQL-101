@@ -22,7 +22,9 @@ def get_all_artists():
     results = g.query(query)
     return [str(row.artistName) for row in results]
 
-# 1. Get the total playlist duration in minutes and seconds
+# 1.) Get the total playlist duration in minutes and seconds
+# CLI Command: python3 sparql.py --query duration
+
 def get_total_duration():
     query = """
     SELECT (SUM(?duration) AS ?totalDuration)
@@ -36,7 +38,9 @@ def get_total_duration():
         total_duration_ms = int(row.totalDuration)
         print(f"Total Playlist Duration: {convert_duration(total_duration_ms)}")
 
-# 2. Get the total number of songs in the playlist
+# 2.) Get the total number of songs in the playlist
+# CLI Command: python3 sparql.py --query total_songs
+
 def get_total_songs():
     query = """
     SELECT (COUNT(?track) AS ?totalSongs)
@@ -48,7 +52,9 @@ def get_total_songs():
     for row in results:
         print(f"Total Number of Songs: {row.totalSongs}")
 
-# 3. Get songs sorted by length in descending order
+# 3.) Get songs sorted by length in descending order
+# CLI Command: python3 sparql.py --query length
+
 def get_songs_sorted_by_length():
     query = """
     SELECT ?songTitle ?duration
@@ -63,7 +69,9 @@ def get_songs_sorted_by_length():
     for row in results:
         print(f"{row.songTitle}: {row.duration}")
 
-# 4. Get the longest song in the playlist
+# 4.) Get the longest song in the playlist
+# CLI Command: python3 sparql.py --query longest
+
 def get_longest_song():
     query = """
     SELECT ?songTitle ?duration
@@ -79,7 +87,9 @@ def get_longest_song():
     for row in results:
         print(f"Longest Song: {row.songTitle}, Duration: {row.duration}")
 
-# 5. Get the shortest song in the playlist
+# 5.) Get the shortest song in the playlist
+# CLI Command: python3 sparql.py --query shortest
+
 def get_shortest_song():
     query = """
     SELECT ?songTitle ?duration
@@ -96,6 +106,8 @@ def get_shortest_song():
         print(f"Shortest Song: {row.songTitle}, Duration: {row.duration}")
 
 # 6. Get songs longer than a specific duration
+# CLI Command: python3 sparql.py --query longer_than --min_duration "4:00"
+
 def get_songs_longer_than(duration):
     query = f"""
     SELECT ?songTitle ?duration
@@ -111,6 +123,8 @@ def get_songs_longer_than(duration):
         print(f"{row.songTitle}: {row.duration}")
 
 # 7. Get songs grouped by album
+# CLI Command: python3 sparql.py --query album
+
 def get_songs_grouped_by_album():
     query = """
     SELECT ?albumTitle ?songTitle
@@ -127,6 +141,8 @@ def get_songs_grouped_by_album():
         print(f"{row.albumTitle}: {row.songTitle}")
 
 # 8. Get songs grouped by artist
+# CLI Command: python3 sparql.py --query artist
+
 def get_songs_grouped_by_artist():
     query = """
     SELECT ?artistName ?songTitle
@@ -143,6 +159,8 @@ def get_songs_grouped_by_artist():
         print(f"{row.artistName}: {row.songTitle}")
 
 # 9. Get artists sorted by most appearances in descending order
+# CLI Command: python3 sparql.py --query by_appearance
+
 def get_artists_by_appearance():
     query = """
     SELECT ?artistName (COUNT(?track) AS ?numSongs)
@@ -159,6 +177,8 @@ def get_artists_by_appearance():
         print(f"{row.artistName}: {row.numSongs} songs")
 
 # 10. Get all songs by a specific artist (manual input)
+# CLI Command: python3 sparql.py --query by_artist
+
 def get_songs_by_artist():
     artists = get_all_artists()
     print("Artists:")
