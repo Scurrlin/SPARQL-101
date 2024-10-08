@@ -1,6 +1,5 @@
 import argparse
 from rdflib import Graph
-import inquirer
 
 g = Graph()
 g.parse("wedding_playlist.rdf", format="turtle")
@@ -15,7 +14,7 @@ def get_all_artists():
     SELECT DISTINCT ?artistName
     WHERE {
         ?track a schema:MusicRecording;
-            schema:byArtist ?artist.
+        	schema:byArtist ?artist.
         ?artist schema:name ?artistName.
     }
     ORDER BY ASC(?artistName)
@@ -159,17 +158,14 @@ def get_artists_by_appearance():
     for row in results:
         print(f"{row.artistName}: {row.numSongs} songs")
 
-# 10. Get all songs by a specific artist with interactive selection
+# 10. Get all songs by a specific artist (manual input)
 def get_songs_by_artist():
     artists = get_all_artists()
-    questions = [
-        inquirer.List(
-            'artist',
-            message="Select an artist",
-            choices=artists,
-        )
-    ]
-    selected_artist = inquirer.prompt(questions)['artist']
+    print("Artists:")
+    for i, artist in enumerate(artists, 1):
+        print(f"{i}. {artist}")
+
+    selected_artist = input("Enter the artist's name from the list above: ")
 
     query = f"""
     SELECT ?songTitle
@@ -177,7 +173,7 @@ def get_songs_by_artist():
         ?track a schema:MusicRecording;
             schema:name ?songTitle;
             schema:byArtist ?artist.
-        ?artist schema:name "{selected_artist}" .
+        ?artist schema:name "{selected_artist}".
     }}
     """
     results = g.query(query)
