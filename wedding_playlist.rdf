@@ -1,0 +1,490 @@
+@prefix schema1: <http://schema.org/> .
+
+<spotify:track:07QlP7twNI81IsqhKLFiER> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:4vGrte8FDu062Ntj0RsPiZ> ;
+    schema1:duration "4:02" ;
+    schema1:inAlbum <spotify:album:3cN3mENkACWuRCDOuQUtfw> ;
+    schema1:name "Reverie" .
+
+<spotify:track:09VW2o6EHSWwzCdhW4ARU1> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:5zixe6AbgXPqt4c1uSl94L> ;
+    schema1:duration "2:22" ;
+    schema1:inAlbum <spotify:album:1Hxam85Bhf98cIkMRKX9QA> ;
+    schema1:name "Trendsetter" .
+
+<spotify:track:0GjEhVFGZW8afUYGChu3Rr> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0LcJLqbBmaGUft1e9Mm8HV> ;
+    schema1:duration "3:50" ;
+    schema1:inAlbum <spotify:album:1V6a99EbTTIegOhWoPxYI9> ;
+    schema1:name "Dancing Queen" .
+
+<spotify:track:0H8XeaJunhvpBdBFIYi6Sh> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:246dkjvS1zLTtiykXe5h60> ;
+    schema1:duration "3:54" ;
+    schema1:inAlbum <spotify:album:5s0rmjP8XOPhP6HhqOhuyC> ;
+    schema1:name "Deja Vu" .
+
+<spotify:track:0kN8xEmgMW9mh7UmDYHlJP> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0du5cEVh5yTK9QJze8zA0C> ;
+    schema1:duration "4:21" ;
+    schema1:inAlbum <spotify:album:4PgleR09JVnm3zY1fW3XBA> ;
+    schema1:name "Versace on the Floor" .
+
+<spotify:track:0s80iBzerTXFySDRlsBaKM> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:5LwAvuVx0FkZ318BQf49XH> ;
+    schema1:duration "3:45" ;
+    schema1:inAlbum <spotify:album:4VU3SvPcjwp4bqTakLRHId> ;
+    schema1:name "Melody" .
+
+<spotify:track:1WkMMavIMc4JZ8cfMmxHkI> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:31TPClRtHm23RisEBtV3X7> ;
+    schema1:duration "3:57" ;
+    schema1:inAlbum <spotify:album:65ayND23IInUPHJKsaAqe7> ;
+    schema1:name "CAN'T STOP THE FEELING! (from DreamWorks Animation's \"TROLLS\")" .
+
+<spotify:track:1Y3LN4zO1Edc2EluIoSPJN> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:5XKFrudbV4IiuE5WuTPRmT> ;
+    schema1:duration "2:56" ;
+    schema1:inAlbum <spotify:album:7ARtQpvnPN2ucbmVHngLOs> ;
+    schema1:name "Until I Found You (with Em Beihold) - Em Beihold Version" .
+
+<spotify:track:1cYKBfqCMLzvpDZFbkrxIW> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:5Apl0wL4OwNUDYkx69rMDQ> ;
+    schema1:duration "3:45" ;
+    schema1:inAlbum <spotify:album:6j7dPFEVXUIavRWKyuamlu> ;
+    schema1:name "Circus" .
+
+<spotify:track:1dGr1c8CrMLDpV6mPbImSI> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:06HL4z0CvFAxyc27GXpf02> ;
+    schema1:duration "3:41" ;
+    schema1:inAlbum <spotify:album:1NAmidJlEaVgA3MpcPFYGq> ;
+    schema1:name "Lover" .
+
+<spotify:track:1mWdTewIgB3gtBM3TOSFhB> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:3Nrfpe0tUJi4K4DXYWgMUX> ;
+    schema1:duration "2:44" ;
+    schema1:inAlbum <spotify:album:0PBQ3Cp6NG8WX0G9KQVNMP> ;
+    schema1:name "Butter" .
+
+<spotify:track:1vwUsp52io0AGQ5yv470IC> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:7bXgB6jMjp9ATFy66eO08Z> ;
+    schema1:duration "4:05" ;
+    schema1:inAlbum <spotify:album:6p5pW2WwgVECsOhrXPAyhI> ;
+    schema1:name "Take You Down" .
+
+<spotify:track:20I8RduZC2PWMWTDCZuuAN> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0XNa1vTidXlvJ2gHSsRi4A> ;
+    schema1:duration "3:57" ;
+    schema1:inAlbum <spotify:album:0vi5ePiEHrGZJF7QhnDW2z> ;
+    schema1:name "Take Me Out" .
+
+<spotify:track:21jGcNKet2qwijlDFuPiPb> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:246dkjvS1zLTtiykXe5h60> ;
+    schema1:duration "3:35" ;
+    schema1:inAlbum <spotify:album:4g1ZRSobMefqF6nelkgibi> ;
+    schema1:name "Circles" .
+
+<spotify:track:241bD3HXJCfaltbLpyCOkH> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:4vGrte8FDu062Ntj0RsPiZ> ;
+    schema1:duration "3:22" ;
+    schema1:inAlbum <spotify:album:7GhytR6ZMWetf1jxAzITtG> ;
+    schema1:name "Yas (feat. Mario Camarena and Erick Hansel)" .
+
+<spotify:track:2HRgqmZQC0MC7GeNuDIXHN> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:6HaGTQPmzraVmaVxvz6EUc> ;
+    schema1:duration "3:03" ;
+    schema1:inAlbum <spotify:album:5pSk3c3wVwnb2arb6ohCPU> ;
+    schema1:name "Seven (feat. Latto) (Explicit Ver.)" .
+
+<spotify:track:2KslE17cAJNHTsI2MI0jb2> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:6HaGTQPmzraVmaVxvz6EUc> ;
+    schema1:duration "3:26" ;
+    schema1:inAlbum <spotify:album:5pSk3c3wVwnb2arb6ohCPU> ;
+    schema1:name "Standing Next to You" .
+
+<spotify:track:2OzhQlSqBEmt7hmkYxfT6m> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:06HL4z0CvFAxyc27GXpf02> ;
+    schema1:duration "3:48" ;
+    schema1:inAlbum <spotify:album:1Mo4aZ8pdj6L1jx8zSwJnt> ;
+    schema1:name "Fortnight (feat. Post Malone)" .
+
+<spotify:track:2U2Z1IXnmJIvlknWizFykZ> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:70kkdajctXSbqSMJbQO424> ;
+    schema1:duration "3:33" ;
+    schema1:inAlbum <spotify:album:7f6xPqyaolTiziKf5R5Z0c> ;
+    schema1:name "High Horse" .
+
+<spotify:track:2aZ2Co4NeQRsqWcU930zHT> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0C0XlULifJtAgn6ZNCW2eu> ;
+    schema1:duration "4:02" ;
+    schema1:inAlbum <spotify:album:3T5bbO2BOnnjun6jKhJdjV> ;
+    schema1:name "Shot At The Night" .
+
+<spotify:track:2cGxRwrMyEAp8dEbuZaVv6> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:4tZwfgrHOc3mvqYlEYSvVi> ;
+    schema1:duration "5:37" ;
+    schema1:inAlbum <spotify:album:4m2880jivSbbyEGAKfITCa> ;
+    schema1:name "Instant Crush (feat. Julian Casablancas)" .
+
+<spotify:track:364dI1bYnvamSnBJ8JcNzN> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:1uNFoZAHBGtllmzznpCI3s> ;
+    schema1:duration "3:32" ;
+    schema1:inAlbum <spotify:album:55zg331p7m1EFA4uRggkwt> ;
+    schema1:name "Intentions" .
+
+<spotify:track:3Fzlg5r1IjhLk2qRw667od> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:6xeFne1rkxMhKSW3ipvkdV> ;
+    schema1:duration "3:52" ;
+    schema1:inAlbum <spotify:album:2ww2PXKiHk7rNv26rjVJ5z> ;
+    schema1:name "Dancing in the Moonlight" .
+
+<spotify:track:3OqX0Aw2U2ptIbOF4uCLEG> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:7bXgB6jMjp9ATFy66eO08Z> ;
+    schema1:duration "4:07" ;
+    schema1:inAlbum <spotify:album:6df0qvkMXoyHGt9J8cujZb> ;
+    schema1:name "Up To You" .
+
+<spotify:track:3cBUv0RIoEyAm2b7qimEY6> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:3TVXtAsR1Inumwj472S9r4> ;
+    schema1:duration "5:28" ;
+    schema1:inAlbum <spotify:album:6jlrjFR9mJV3jd1IPSplXU> ;
+    schema1:name "Thank Me Now" .
+
+<spotify:track:3dhjNA0jGA8vHBQ1VdD6vV> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ> ;
+    schema1:duration "4:29" ;
+    schema1:inAlbum <spotify:album:2ODvWsOgouMbaA5xf0RkJe> ;
+    schema1:name "I Feel It Coming" .
+
+<spotify:track:3diFl7NyFuxqkUZnoHo3TL> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:5Apl0wL4OwNUDYkx69rMDQ> ;
+    schema1:duration "3:26" ;
+    schema1:inAlbum <spotify:album:4XAAYiLpnRgXBBbBW53C8D> ;
+    schema1:name "Wake Me Up" .
+
+<spotify:track:3v3VFa7Dt32gNR27jfw7DG> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:4vGrte8FDu062Ntj0RsPiZ> ;
+    schema1:duration "3:53" ;
+    schema1:inAlbum <spotify:album:0zFqkobYDLzAAHbK2lgc68> ;
+    schema1:name "40oz" .
+
+<spotify:track:3vkQ5DAB1qQMYO4Mr9zJN6> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0LcJLqbBmaGUft1e9Mm8HV> ;
+    schema1:duration "4:52" ;
+    schema1:inAlbum <spotify:album:7iLuHJkrb9KHPkMgddYigh> ;
+    schema1:name "Gimme! Gimme! Gimme! (A Man After Midnight)" .
+
+<spotify:track:4LwU4Vp6od3Sb08CsP99GC> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:6DPYiyq5kWVQS4RGwxzPC7> ;
+    schema1:duration "2:41" ;
+    schema1:inAlbum <spotify:album:7q2B4M5EiBkqrlsNW8lB7N> ;
+    schema1:name "The Next Episode" .
+
+<spotify:track:4S0zagxseJHOL5ZVnTQA6X> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:4vGrte8FDu062Ntj0RsPiZ> ;
+    schema1:duration "3:25" ;
+    schema1:inAlbum <spotify:album:3cN3mENkACWuRCDOuQUtfw> ;
+    schema1:name "Playing God" .
+
+<spotify:track:4dNKAlFAjUqelFX5ganK7Y> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:31TPClRtHm23RisEBtV3X7> ;
+    schema1:duration "2:32" ;
+    schema1:inAlbum <spotify:album:5izS9lEKFma3NVRl6uBbTs> ;
+    schema1:name "Perfect" .
+
+<spotify:track:4lIxdJw6W3Fg4vUIYCB0S5> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:06HL4z0CvFAxyc27GXpf02> ;
+    schema1:duration "3:51" ;
+    schema1:inAlbum <spotify:album:2QJmrSgbdM35R67eoGQo4j> ;
+    schema1:name "Style" .
+
+<spotify:track:57Xjny5yNzAcsxnusKmAfA> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0epOFNiUfyON9EYx7Tpr6V> ;
+    schema1:duration "3:39" ;
+    schema1:inAlbum <spotify:album:3HFbH1loOUbqCyPsLuHLLh> ;
+    schema1:name "Reptilia" .
+
+<spotify:track:5DI9jxTHrEiFAhStG7VA8E> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:3TVXtAsR1Inumwj472S9r4> ;
+    schema1:duration "2:54" ;
+    schema1:inAlbum <spotify:album:1XslIirSxfAhhxRdn4Li9t> ;
+    schema1:name "Started From the Bottom" .
+
+<spotify:track:5GJaRoYtOiXUpPVT0jyNNq> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:6Ff53KvcvAj5U7Z1vojB5o> ;
+    schema1:duration "2:15" ;
+    schema1:inAlbum <spotify:album:5izS9lEKFma3NVRl6uBbTs> ;
+    schema1:name "Better Place (Reunion)" .
+
+<spotify:track:5XMkENs3GfeRza8MfVAhjK> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0du5cEVh5yTK9QJze8zA0C> ;
+    schema1:duration "3:11" ;
+    schema1:inAlbum <spotify:album:4PgleR09JVnm3zY1fW3XBA> ;
+    schema1:name "Finesse" .
+
+<spotify:track:62aP9fBQKYKxi7PDXwcUAS> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:1lmU3giNF3CSbkVSQmLpHQ> ;
+    schema1:duration "2:56" ;
+    schema1:inAlbum <spotify:album:4MHHajvRTUHItDsvfdIC8B> ;
+    schema1:name "ily (i love you baby) (feat. Emilee)" .
+
+<spotify:track:68vgtRHr7iZHpzGpon6Jlo> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:23zg3TcAtWQy7J6upgbUnj> ;
+    schema1:duration "3:43" ;
+    schema1:inAlbum <spotify:album:1RM6MGv6bcl6NrAG8PGoZk> ;
+    schema1:name "My Boo" .
+
+<spotify:track:69kOkLUCkxIZYexIgSG8rq> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:4tZwfgrHOc3mvqYlEYSvVi> ;
+    schema1:duration "6:09" ;
+    schema1:inAlbum <spotify:album:4m2880jivSbbyEGAKfITCa> ;
+    schema1:name "Get Lucky (feat. Pharrell Williams and Nile Rodgers)" .
+
+<spotify:track:6AI3ezQ4o3HUoP6Dhudph3> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:2YZyLoL8N0Wb9xBt1NhZWg> ;
+    schema1:duration "4:34" ;
+    schema1:inAlbum <spotify:album:5JjnoGJyOxfSZUZtk2rRwZ> ;
+    schema1:name "Not Like Us" .
+
+<spotify:track:6NwhtCYkfwWlcR62Ac4E7y> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:3TVXtAsR1Inumwj472S9r4> ;
+    schema1:duration "6:15" ;
+    schema1:inAlbum <spotify:album:1LShhEEKRT5MNPcO7jtYHh> ;
+    schema1:name "Successful (feat. Trey Songz & Lil Wayne)" .
+
+<spotify:track:6PwjJ58I4t7Mae9xfZ9l9v> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0C0XlULifJtAgn6ZNCW2eu> ;
+    schema1:duration "3:17" ;
+    schema1:inAlbum <spotify:album:4piJq7R3gjUOxnYs6lDCTg> ;
+    schema1:name "Somebody Told Me" .
+
+<spotify:track:6xsEAm6w9oMQYYg3jkEkMT> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:06HL4z0CvFAxyc27GXpf02> ;
+    schema1:duration "3:20" ;
+    schema1:inAlbum <spotify:album:1Tv3rrFNdXGtTeP1plX2xE> ;
+    schema1:name "Bad Blood" .
+
+<spotify:track:6zSpb8dQRaw0M1dK8PBwQz> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:3PhoLpVuITZKcymswpck5b> ;
+    schema1:duration "3:22" ;
+    schema1:inAlbum <spotify:album:5D8Rdb09BkmHscEGSWAlA6> ;
+    schema1:name "Cold Heart - PNAU Remix" .
+
+<spotify:track:71E83jKHQ7MQ7dOsj9WBPT> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:4vGrte8FDu062Ntj0RsPiZ> ;
+    schema1:duration "4:00" ;
+    schema1:inAlbum <spotify:album:1Ki56K82avE7nTkZEyVIE7> ;
+    schema1:name "Crush" .
+
+<spotify:track:7FAFkQQZFeNwOFzTrSDFIh> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:4LLpKhyESsyAXpc4laK94U> ;
+    schema1:duration "3:15" ;
+    schema1:inAlbum <spotify:album:6TFm9KGW7Lbxrl2Zsg4X9R> ;
+    schema1:name "The Spins" .
+
+<spotify:track:7KXjTSCq5nL1LoYtL7XAwS> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:2YZyLoL8N0Wb9xBt1NhZWg> ;
+    schema1:duration "2:57" ;
+    schema1:inAlbum <spotify:album:4eLPsYPBmXABThSJ821sqY> ;
+    schema1:name "HUMBLE." .
+
+<spotify:track:7MXVkk9YMctZqd1Srtv4MB> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ> ;
+    schema1:duration "3:50" ;
+    schema1:inAlbum <spotify:album:2ODvWsOgouMbaA5xf0RkJe> ;
+    schema1:name "Starboy" .
+
+<spotify:track:7cQjIIjLOhbRVCXyIepF2U> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:7FBcuc1gsnv6Y1nwFtNRCb> ;
+    schema1:duration "4:06" ;
+    schema1:inAlbum <spotify:album:2wPnKggTK3QhYAKL7Q0vvr> ;
+    schema1:name "Summertime" .
+
+<spotify:track:7cX4PJz1old9fyFI8RlfgW> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:0C0XlULifJtAgn6ZNCW2eu> ;
+    schema1:duration "4:06" ;
+    schema1:inAlbum <spotify:album:4o3RJndRhHxkieQzQGhmbw> ;
+    schema1:name "Read My Mind" .
+
+<spotify:track:7fBv7CLKzipRk6EC6TWHOB> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ> ;
+    schema1:duration "4:02" ;
+    schema1:inAlbum <spotify:album:0P3oVJBFOv3TDXlYRhGL7s> ;
+    schema1:name "The Hills" .
+
+<spotify:track:7sVbKoBdhXtYCEOO6qC1SN> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:1RyvyyTE3xzB2ZywiAwp0i> ;
+    schema1:duration "4:12" ;
+    schema1:inAlbum <spotify:album:3bSNhnaQQXpC639OQ4pMyP> ;
+    schema1:name "We Still Don't Trust You" .
+
+<spotify:track:7v0hKO3RYhEXt2EPXf4AOS> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:3TVXtAsR1Inumwj472S9r4> ;
+    schema1:duration "3:30" ;
+    schema1:inAlbum <spotify:album:6jlrjFR9mJV3jd1IPSplXU> ;
+    schema1:name "Show Me A Good Time" .
+
+<spotify:track:7xvqJlCB4eStxxMjFJyYuo> a schema1:MusicRecording ;
+    schema1:byArtist <spotify:artist:6xfqnpe2HnLVUaYXs2F8YS> ;
+    schema1:duration "4:03" ;
+    schema1:inAlbum <spotify:album:65ayND23IInUPHJKsaAqe7> ;
+    schema1:name "True Colors" .
+
+<spotify:album:0P3oVJBFOv3TDXlYRhGL7s> schema1:name "Beauty Behind The Madness" .
+
+<spotify:album:0PBQ3Cp6NG8WX0G9KQVNMP> schema1:name "Butter (Hotter, Sweeter, Cooler)" .
+
+<spotify:album:0vi5ePiEHrGZJF7QhnDW2z> schema1:name "Franz Ferdinand" .
+
+<spotify:album:0zFqkobYDLzAAHbK2lgc68> schema1:name "The Most Hated" .
+
+<spotify:album:1Hxam85Bhf98cIkMRKX9QA> schema1:name "Trendsetter" .
+
+<spotify:album:1Ki56K82avE7nTkZEyVIE7> schema1:name "Renaissance" .
+
+<spotify:album:1LShhEEKRT5MNPcO7jtYHh> schema1:name "So Far Gone" .
+
+<spotify:album:1Mo4aZ8pdj6L1jx8zSwJnt> schema1:name "THE TORTURED POETS DEPARTMENT" .
+
+<spotify:album:1NAmidJlEaVgA3MpcPFYGq> schema1:name "Lover" .
+
+<spotify:album:1RM6MGv6bcl6NrAG8PGoZk> schema1:name "Confessions (Expanded Edition)" .
+
+<spotify:album:1Tv3rrFNdXGtTeP1plX2xE> schema1:name "Bad Blood" .
+
+<spotify:album:1V6a99EbTTIegOhWoPxYI9> schema1:name "Arrival" .
+
+<spotify:album:1XslIirSxfAhhxRdn4Li9t> schema1:name "Nothing Was The Same" .
+
+<spotify:album:2QJmrSgbdM35R67eoGQo4j> schema1:name "1989" .
+
+<spotify:album:2wPnKggTK3QhYAKL7Q0vvr> schema1:name "Danger Days: The True Lives of the Fabulous Killjoys" .
+
+<spotify:album:2ww2PXKiHk7rNv26rjVJ5z> schema1:name "Onka's Big Moka" .
+
+<spotify:album:3HFbH1loOUbqCyPsLuHLLh> schema1:name "Room On Fire" .
+
+<spotify:album:3T5bbO2BOnnjun6jKhJdjV> schema1:name "Direct Hits" .
+
+<spotify:album:3bSNhnaQQXpC639OQ4pMyP> schema1:name "WE STILL DON'T TRUST YOU" .
+
+<spotify:album:4MHHajvRTUHItDsvfdIC8B> schema1:name "ily (i love you baby) (feat. Emilee)" .
+
+<spotify:album:4VU3SvPcjwp4bqTakLRHId> schema1:name "Melody" .
+
+<spotify:album:4XAAYiLpnRgXBBbBW53C8D> schema1:name "Loopified" .
+
+<spotify:album:4eLPsYPBmXABThSJ821sqY> schema1:name "DAMN." .
+
+<spotify:album:4g1ZRSobMefqF6nelkgibi> schema1:name "Hollywood's Bleeding" .
+
+<spotify:album:4o3RJndRhHxkieQzQGhmbw> schema1:name "Sam's Town" .
+
+<spotify:album:4piJq7R3gjUOxnYs6lDCTg> schema1:name "Hot Fuss" .
+
+<spotify:album:55zg331p7m1EFA4uRggkwt> schema1:name "Intentions" .
+
+<spotify:album:5D8Rdb09BkmHscEGSWAlA6> schema1:name "Cold Heart (PNAU Remix)" .
+
+<spotify:album:5JjnoGJyOxfSZUZtk2rRwZ> schema1:name "Not Like Us" .
+
+<spotify:album:5s0rmjP8XOPhP6HhqOhuyC> schema1:name "Stoney - Deluxe" .
+
+<spotify:album:6TFm9KGW7Lbxrl2Zsg4X9R> schema1:name "K.I.D.S. (Deluxe)" .
+
+<spotify:album:6df0qvkMXoyHGt9J8cujZb> schema1:name "F.A.M.E. (Expanded Edition)" .
+
+<spotify:album:6j7dPFEVXUIavRWKyuamlu> schema1:name "Loopified (Deluxe Edition)" .
+
+<spotify:album:6p5pW2WwgVECsOhrXPAyhI> schema1:name "Exclusive (Expanded Edition)" .
+
+<spotify:album:7ARtQpvnPN2ucbmVHngLOs> schema1:name "Until I Found You (Em Beihold Version)" .
+
+<spotify:album:7GhytR6ZMWetf1jxAzITtG> schema1:name "New Levels New Devils" .
+
+<spotify:album:7f6xPqyaolTiziKf5R5Z0c> schema1:name "Golden Hour" .
+
+<spotify:album:7iLuHJkrb9KHPkMgddYigh> schema1:name "Voulez-Vous" .
+
+<spotify:album:7q2B4M5EiBkqrlsNW8lB7N> schema1:name "2001" .
+
+<spotify:artist:0XNa1vTidXlvJ2gHSsRi4A> schema1:name "Franz Ferdinand" .
+
+<spotify:artist:0epOFNiUfyON9EYx7Tpr6V> schema1:name "The Strokes" .
+
+<spotify:artist:1RyvyyTE3xzB2ZywiAwp0i> schema1:name "Future" .
+
+<spotify:artist:1lmU3giNF3CSbkVSQmLpHQ> schema1:name "Surf Mesa" .
+
+<spotify:artist:1uNFoZAHBGtllmzznpCI3s> schema1:name "Justin Bieber" .
+
+<spotify:artist:23zg3TcAtWQy7J6upgbUnj> schema1:name "USHER" .
+
+<spotify:artist:3Nrfpe0tUJi4K4DXYWgMUX> schema1:name "BTS" .
+
+<spotify:artist:3PhoLpVuITZKcymswpck5b> schema1:name "Elton John" .
+
+<spotify:artist:4LLpKhyESsyAXpc4laK94U> schema1:name "Mac Miller" .
+
+<spotify:artist:5LwAvuVx0FkZ318BQf49XH> schema1:name "Ka-Lo" .
+
+<spotify:artist:5XKFrudbV4IiuE5WuTPRmT> schema1:name "Stephen Sanchez" .
+
+<spotify:artist:5zixe6AbgXPqt4c1uSl94L> schema1:name "Connor Price" .
+
+<spotify:artist:6DPYiyq5kWVQS4RGwxzPC7> schema1:name "Dr. Dre" .
+
+<spotify:artist:6Ff53KvcvAj5U7Z1vojB5o> schema1:name "*NSYNC" .
+
+<spotify:artist:6xeFne1rkxMhKSW3ipvkdV> schema1:name "Toploader" .
+
+<spotify:artist:6xfqnpe2HnLVUaYXs2F8YS> schema1:name "Anna Kendrick" .
+
+<spotify:artist:70kkdajctXSbqSMJbQO424> schema1:name "Kacey Musgraves" .
+
+<spotify:artist:7FBcuc1gsnv6Y1nwFtNRCb> schema1:name "My Chemical Romance" .
+
+<spotify:album:2ODvWsOgouMbaA5xf0RkJe> schema1:name "Starboy" .
+
+<spotify:album:3cN3mENkACWuRCDOuQUtfw> schema1:name "Remember That You Will Die" .
+
+<spotify:album:4PgleR09JVnm3zY1fW3XBA> schema1:name "24K Magic" .
+
+<spotify:album:4m2880jivSbbyEGAKfITCa> schema1:name "Random Access Memories" .
+
+<spotify:album:5izS9lEKFma3NVRl6uBbTs> schema1:name "TROLLS Band Together (Original Motion Picture Soundtrack)" .
+
+<spotify:album:5pSk3c3wVwnb2arb6ohCPU> schema1:name "GOLDEN" .
+
+<spotify:album:65ayND23IInUPHJKsaAqe7> schema1:name "TROLLS (Original Motion Picture Soundtrack)" .
+
+<spotify:album:6jlrjFR9mJV3jd1IPSplXU> schema1:name "Thank Me Later" .
+
+<spotify:artist:0LcJLqbBmaGUft1e9Mm8HV> schema1:name "ABBA" .
+
+<spotify:artist:0du5cEVh5yTK9QJze8zA0C> schema1:name "Bruno Mars" .
+
+<spotify:artist:246dkjvS1zLTtiykXe5h60> schema1:name "Post Malone" .
+
+<spotify:artist:2YZyLoL8N0Wb9xBt1NhZWg> schema1:name "Kendrick Lamar" .
+
+<spotify:artist:31TPClRtHm23RisEBtV3X7> schema1:name "Justin Timberlake" .
+
+<spotify:artist:4tZwfgrHOc3mvqYlEYSvVi> schema1:name "Daft Punk" .
+
+<spotify:artist:5Apl0wL4OwNUDYkx69rMDQ> schema1:name "Dirty Loops" .
+
+<spotify:artist:6HaGTQPmzraVmaVxvz6EUc> schema1:name "Jung Kook" .
+
+<spotify:artist:7bXgB6jMjp9ATFy66eO08Z> schema1:name "Chris Brown" .
+
+<spotify:artist:0C0XlULifJtAgn6ZNCW2eu> schema1:name "The Killers" .
+
+<spotify:artist:1Xyo4u8uXC1ZmMpatF05PJ> schema1:name "The Weeknd" .
+
+<spotify:artist:06HL4z0CvFAxyc27GXpf02> schema1:name "Taylor Swift" .
+
+<spotify:artist:3TVXtAsR1Inumwj472S9r4> schema1:name "Drake" .
+
+<spotify:artist:4vGrte8FDu062Ntj0RsPiZ> schema1:name "Polyphia" .
+
