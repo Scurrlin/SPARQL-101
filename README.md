@@ -227,9 +227,9 @@ Pharrell Williams:
 
     Once you are on the **Create app** page, you will need to provide the following information:
 
-    * App name
-    * App description
-    * Redirect URI
+* App name
+* App description
+* Redirect URI
 
     For the redirect URI, you can add one of the following options:
 
