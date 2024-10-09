@@ -224,3 +224,25 @@ Pharrell Williams:
     From here, click on the `Create app` button in the top right corner. Unsurprisingly, this will take you to the **Create app** page.
 
     ![Create_app](./assets/create_app.jpg)
+
+    Once you are on the **Create app** page, you will need to provide the following information:
+
+    1. App name
+    2. App description
+    3. Redirect URIs
+
+    For the redirect URI, you can add one of the following options:
+
+    **Local Testing**:
+    ```
+    http://127.0.0.1:8888/spotify/callback
+    ```
+
+    **Production**:
+    ```
+    https://yourdomain.com/callback
+    ```
+
+    Before clicking the `Save` button, be sure to indicate that you intend to use the `Web API` below the Redirect URIs field. Once you have saved your information, you will land on your app's home page. From here, click on the `Settings` button in the top right corner. This will take you to the `Basic Information` page where you will find your `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`.
+
+    The last piece of data you will need is the `SPOTIFY_PLAYLIST_ID`
