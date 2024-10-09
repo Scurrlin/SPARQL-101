@@ -24,7 +24,7 @@ def get_all_artists():
     results = g.query(query)
     return [str(row.artistName) for row in results]
 
-# 1. Get the total playlist duration
+# 1.) Get the total playlist duration
 # CLI Command: python3 sparql.py --query duration
 
 def get_total_duration():
@@ -45,7 +45,7 @@ def get_total_duration():
     total_seconds = total_duration_seconds % 60
     print(f"Total Playlist Duration: {total_minutes} minutes, {total_seconds} seconds")
 
-# 2. Get the total number of songs in the playlist
+# 2.) Get the total number of songs in the playlist
 # CLI Command: python3 sparql.py --query total_songs
 
 def get_total_songs():
@@ -112,7 +112,7 @@ def get_shortest_song():
     for row in results:
         print(f"Shortest Song: {row.songTitle}, Duration: {row.duration}")
 
-# 6. Get songs longer than a specific duration
+# 6.) Get songs longer than a specific duration
 # CLI Command: python3 sparql.py --query longer_than --min_duration "4:00"
 
 def get_songs_longer_than(duration):
@@ -130,7 +130,7 @@ def get_songs_longer_than(duration):
     for index, row in enumerate(results, start=1):
         print(f"{index}. {row.songTitle}: {row.duration}")
 
-# 7. Get songs grouped by album
+# 7.) Get songs grouped by album
 # CLI Command: python3 sparql.py --query album
 
 def get_songs_grouped_by_album():
@@ -157,7 +157,7 @@ def get_songs_grouped_by_album():
             print(f" - {song}")
         print()
 
-# 8. Get songs grouped by artist
+# 8.) Get songs grouped by artist
 # CLI Command: python3 sparql.py --query artist
 
 def get_songs_grouped_by_artist():
@@ -184,7 +184,7 @@ def get_songs_grouped_by_artist():
             print(f" - {song}")
         print()
 
-# 9. Get artists sorted by most appearances in descending order
+# 9.) Get artists sorted by most appearances in descending order
 # CLI Command: python3 sparql.py --query by_appearance
 
 def get_artists_by_appearance():
@@ -202,7 +202,7 @@ def get_artists_by_appearance():
     for index, row in enumerate(results, start=1):
         print(f"{index}. {row.artistName}: {row.numSongs} songs")
 
-# 10. Get all songs by a specific artist (manual input)
+# 10.) Get all songs by a specific artist (manual input)
 # CLI Command: python3 sparql.py --query by_artist
 
 def get_songs_by_artist():
