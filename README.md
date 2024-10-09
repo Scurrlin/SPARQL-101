@@ -11,8 +11,7 @@ In this repository, I cover the entire process of extracting Spotify metadata fr
 2. [RDF Data Structure](#rdf-data-structure)
 3. [SPARQL Queries Used](#sparql-queries-used)
 4. [Running the Queries](#running-the-queries)
-5. [Examples](#examples)
-6. [Setup Instructions](#setup-instructions)
+5. [Setup Instructions](#setup-instructions)
 
 ## Why SPARQL?
 
@@ -156,7 +155,7 @@ Here are some examples of the SPARQL queries used in this project, along with ex
 
     - This query retrieves songs and groups them by artist. The `SELECT` clause pulls both the artist name and song title, while the `WHERE` clause specifies the relationships needed to match the artist and song data. The `ORDER BY` clause sorts the results by artist name, making it easy to see all songs associated with each artist in alphabetical order.
 
-## Examples
+## Running the Queries
 
 ### Example 1: Get the Total Number of Songs
 ```bash
