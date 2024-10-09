@@ -201,6 +201,7 @@ Pharrell Williams:
 ## Setup Instructions
 
 1. **Install Dependencies**:
+
    Make sure you have the following dependencies installed:
 
    ```bash
@@ -208,6 +209,7 @@ Pharrell Williams:
    ```
 
 2. **Setting up Environment Variables**:
+
     After you've installed the necessary dependencies, you'll need to set up your environment variables. Create a new file named `.env` in the root of your project and add the following four variables. Don't forget to include them in your `.gitignore`!
 
     ```env
@@ -258,6 +260,7 @@ Pharrell Williams:
     ```
 
 3. **Connecting to the Spotify API**:
+
     Once you have all of your environment variables set, it's time to connect to the Spotify API. To do so, create a new file in your directory called `playlist_data.py` and paste in the code snippet below:
 
     <details>
@@ -329,3 +332,353 @@ Pharrell Williams:
     Now that you have established your connection to the Spotify API, it's time to transform the metadata into an RDF file.
 
 4. **RDF Conversion**:
+
+    To convert the Spotify playlist data into an RDF file, you'll need to create a new file in your directory called `rdf_schema.py`. Within that file, paste in the code snippet below:
+
+    <details>
+    <summary><code>playlist_data.py</code></summary>
+
+    ```python
+    import spotipy
+    from spotipy.oauth2 import SpotifyOAuth
+    from dotenv import load_dotenv
+    import os
+    from rdflib import Graph, URIRef, Literal, Namespace
+    from rdflib.namespace import RDF, RDFS
+
+    load_dotenv()
+
+    SPOTIFY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
+    SPOTIFY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
+    SPOTIFY_REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
+    SPOTIFY_PLAYLIST_ID = os.getenv('SPOTIFY_PLAYLIST_ID')
+
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+        client_id=SPOTIFY_CLIENT_ID,
+        client_secret=SPOTIFY_CLIENT_SECRET,
+        redirect_uri=SPOTIFY_REDIRECT_URI,
+        scope="playlist-read-private"
+    ))
+
+    def convert_duration(duration_ms):
+        minutes = duration_ms // 60000
+        seconds = (duration_ms % 60000) // 1000
+        return f"{minutes}:{seconds:02d}"
+
+    g = Graph()
+
+    SPOTIFY = Namespace("http://www.spotify.com/ontologies/")
+    SCHEMA = Namespace("http://schema.org/")
+
+    g.bind("spotify", SPOTIFY)
+    g.bind("schema", SCHEMA)
+
+    playlist = sp.playlist(SPOTIFY_PLAYLIST_ID)
+
+    for track in playlist['tracks']['items']:
+        track_info = track['track']
+        track_uri = URIRef(track_info['uri'])
+    
+        g.add((track_uri, RDF.type, SCHEMA.MusicRecording))
+        g.add((track_uri, SCHEMA.name, Literal(track_info['name'])))
+        g.add((track_uri, SCHEMA.duration, Literal(convert_duration(track_info['duration_ms']))))
+    
+        artist_uri = URIRef(track_info['artists'][0]['uri'])
+        g.add((track_uri, SCHEMA.byArtist, artist_uri))
+        g.add((artist_uri, SCHEMA.name, Literal(track_info['artists'][0]['name'])))
+    
+        album_uri = URIRef(track_info['album']['uri'])
+        g.add((track_uri, SCHEMA.inAlbum, album_uri))
+        g.add((album_uri, SCHEMA.name, Literal(track_info['album']['name'])))
+    
+    g.serialize(destination="your_playlist.rdf", format="turtle")
+
+    print("RDF data generated and saved to your_playlist.rdf")
+    ```
+
+    </details>
+
+    If you successfully ran the `rdf_schema.py` script, you should a new `your_playlist.rdf` file appear in your directory.
+
+5. **Analyzing your playlist data with SPARQL**:
+
+    We are finally ready to start running SPARQL queries! First, create one last file in your directory called `sparql.py`. You can copy and paste in the same code that I have in my file, but I encourage you to come up with your own queries as well!
+
+    <details>
+    <summary><code>sparql.py</code></summary>
+
+    ```python
+    import argparse
+    from rdflib import Graph
+    from collections import defaultdict
+
+    g = Graph()
+    g.parse("your_playlist.rdf", format="turtle")
+
+    # Helper Functions
+
+    def convert_duration(duration_str):
+        minutes, seconds = map(int, duration_str.split(":"))
+        return f"{minutes} minutes, {seconds} seconds"
+
+    def get_all_artists():
+        query = """
+        SELECT DISTINCT ?artistName
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:byArtist ?artist.
+            ?artist schema1:name ?artistName.
+        }
+        ORDER BY ASC(?artistName)
+        """
+        results = g.query(query)
+        return [str(row.artistName) for row in results]
+
+    # 1.) Get the total playlist duration
+    # CLI Command: python3 sparql.py --query duration
+
+    def get_total_duration():
+        query = """
+        SELECT ?duration
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:duration ?duration.
+        }
+        """
+        total_duration_seconds = 0
+        results = g.query(query)
+        for row in results:
+            minutes, seconds = map(int, row.duration.split(":"))
+            total_duration_seconds += minutes * 60 + seconds
+
+        total_minutes = total_duration_seconds // 60
+        total_seconds = total_duration_seconds % 60
+        print(f"Total Playlist Duration: {total_minutes} minutes, {total_seconds} seconds")
+
+    # 2.) Get the total number of songs in the playlist
+    # CLI Command: python3 sparql.py --query total_songs
+
+    def get_total_songs():
+        query = """
+        SELECT (COUNT(?track) AS ?totalSongs)
+        WHERE {
+            ?track a schema1:MusicRecording.
+        }
+        """
+        results = g.query(query)
+        for row in results:
+            print(f"Total Number of Songs: {row.totalSongs}")
+
+    # 3.) Get songs sorted by length in descending order
+    # CLI Command: python3 sparql.py --query length
+
+    def get_songs_sorted_by_length():
+        query = """
+        SELECT ?songTitle ?duration
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:name ?songTitle;
+                schema1:duration ?duration.
+        }
+        ORDER BY DESC(?duration)
+        """
+        results = g.query(query)
+        for index, row in enumerate(results, start=1):
+            print(f"{index}. {row.songTitle}: {row.duration}")
+
+    # 4.) Get the longest song in the playlist
+    # CLI Command: python3 sparql.py --query longest
+
+    def get_longest_song():
+        query = """
+        SELECT ?songTitle ?duration
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:name ?songTitle;
+                schema1:duration ?duration.
+        }
+        ORDER BY DESC(?duration)
+        LIMIT 1
+        """
+        results = g.query(query)
+        for row in results:
+            print(f"Longest Song: {row.songTitle}, Duration: {row.duration}")
+
+    # 5.) Get the shortest song in the playlist
+    # CLI Command: python3 sparql.py --query shortest
+
+    def get_shortest_song():
+        query = """
+        SELECT ?songTitle ?duration
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:name ?songTitle;
+                schema1:duration ?duration.
+        }
+        ORDER BY ASC(?duration)
+        LIMIT 1
+        """
+        results = g.query(query)
+        for row in results:
+            print(f"Shortest Song: {row.songTitle}, Duration: {row.duration}")
+
+    # 6.) Get songs longer than a specific duration
+    # CLI Command: python3 sparql.py --query longer_than --min_duration "4:00"
+
+    def get_songs_longer_than(duration):
+        query = f"""
+        SELECT ?songTitle ?duration
+        WHERE {{
+            ?track a schema1:MusicRecording;
+                schema1:name ?songTitle;
+                schema1:duration ?duration.
+            FILTER (?duration > "{duration}")
+        }}
+        ORDER BY DESC(?duration)
+        """
+        results = g.query(query)
+        for index, row in enumerate(results, start=1):
+            print(f"{index}. {row.songTitle}: {row.duration}")
+
+    # 7.) Get songs grouped by album
+    # CLI Command: python3 sparql.py --query album
+
+    def get_songs_grouped_by_album():
+        query = """
+        SELECT ?albumTitle ?songTitle
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:name ?songTitle;
+                schema1:inAlbum ?album.
+            ?album schema1:name ?albumTitle.
+        }
+        ORDER BY ?albumTitle
+        """
+        results = g.query(query)
+
+        album_songs = defaultdict(list)
+
+        for row in results:
+            album_songs[row.albumTitle].append(row.songTitle)
+
+        for album, songs in album_songs.items():
+            print(f"{album}:")
+            for song in songs:
+                print(f" - {song}")
+            print()
+
+    # 8.) Get songs grouped by artist
+    # CLI Command: python3 sparql.py --query artist
+
+    def get_songs_grouped_by_artist():
+        query = """
+        SELECT ?artistName ?songTitle
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:name ?songTitle;
+                schema1:byArtist ?artist.
+            ?artist schema1:name ?artistName.
+        }
+        ORDER BY ?artistName
+        """
+        results = g.query(query)
+
+        artist_songs = defaultdict(list)
+
+        for row in results:
+            artist_songs[row.artistName].append(row.songTitle)
+
+        for artist, songs in artist_songs.items():
+            print(f"{artist}:")
+            for song in songs:
+                print(f" - {song}")
+            print()
+
+    # 9.) Get artists sorted by most appearances in descending order
+    # CLI Command: python3 sparql.py --query by_appearance
+
+    def get_artists_by_appearance():
+        query = """
+        SELECT ?artistName (COUNT(?track) AS ?numSongs)
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:byArtist ?artist.
+            ?artist schema1:name ?artistName.
+        }
+        GROUP BY ?artistName
+        ORDER BY DESC(?numSongs)
+        """
+        results = g.query(query)
+        for index, row in enumerate(results, start=1):
+            print(f"{index}. {row.artistName}: {row.numSongs} songs")
+
+    # 10.) Get all songs by a specific artist (manual input)
+    # CLI Command: python3 sparql.py --query by_artist
+
+    def get_songs_by_artist():
+        artists = get_all_artists()
+        print("Artists:")
+        for i, artist in enumerate(artists, 1):
+            print(f"{i}. {artist}")
+
+        selected_artist = input("Enter the artist's name from the list above: ")
+
+        query = f"""
+        SELECT ?songTitle
+        WHERE {{
+            ?track a schema1:MusicRecording;
+                schema1:name ?songTitle;
+                schema1:byArtist ?artist.
+            ?artist schema1:name "{selected_artist}".
+        }}
+        """
+        results = g.query(query)
+        print(f"Songs by {selected_artist}:")
+        for row in results:
+            print(f" - {row.songTitle}")
+
+    if __name__ == "__main__":
+        parser = argparse.ArgumentParser(description="Run SPARQL queries on your RDF playlist data.")
+    
+        parser.add_argument(
+            "--query", 
+            type=str, 
+            required=True, 
+            choices=["duration", "total_songs", "length", "longest", "shortest", "longer_than", "album", "artist", "by_appearance", "by_artist"], 
+            help="Specify the query to run."
+        )
+    
+        parser.add_argument(
+            "--min_duration", 
+            type=str, 
+            help="Minimum duration in 'mm:ss' (required if 'longer_than' query is selected)"
+        )
+
+        args = parser.parse_args()
+
+        if args.query == "duration":
+            get_total_duration()
+        elif args.query == "total_songs":
+            get_total_songs()
+        elif args.query == "length":
+            get_songs_sorted_by_length()
+        elif args.query == "longest":
+            get_longest_song()
+        elif args.query == "shortest":
+            get_shortest_song()
+        elif args.query == "longer_than":
+            if args.min_duration:
+                get_songs_longer_than(args.min_duration)
+            else:
+                print("Error: --min_duration is required for the 'longer_than' query.")
+        elif args.query == "album":
+            get_songs_grouped_by_album()
+        elif args.query == "artist":
+            get_songs_grouped_by_artist()
+        elif args.query == "by_appearance":
+            get_artists_by_appearance()
+        elif args.query == "by_artist":
+            get_songs_by_artist()
+    ```
+
+    </details>
