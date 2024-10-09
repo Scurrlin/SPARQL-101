@@ -402,7 +402,7 @@ Pharrell Williams:
 
 5. **Analyzing your playlist data with SPARQL**:
 
-    We are finally ready to start running SPARQL queries! First, create one last file in your directory called `sparql.py`. You can copy and paste in the same code that I have in my file, but I encourage you to come up with your own queries as well!
+    We are finally ready to start running SPARQL queries! First, create one last file in your directory called `sparql.py`. You can copy and paste in the same code that I have in my `sparql.py` file, but I encourage you to come up with your own queries as well!
 
     <details>
     <summary><code>sparql.py</code></summary>
