@@ -16,12 +16,12 @@ In this repository, I cover the entire process of extracting Spotify metadata fr
 
 ## Why SPARQL?
 
-SPARQL is a powerful language specifically designed for querying RDF data. RDF is a graph-based data format, meaning it stores information as a collection of triples, which represent relationships between different pieces of data. Each triple consists of:
+SPARQL is a powerful language specifically designed for querying RDF data. RDF is a graph-based data format which stores information as a collection of triples. These triples represent the relationships between different pieces of data. Each triple consists of the following:
 - **Subject**: The resource being described (e.g., a track).
 - **Predicate**: The property or characteristic of the resource (e.g., the track's duration or its artist).
 - **Object**: The value of the property (e.g., "4:02" or "The Killers").
 
-SPARQL queries are well-suited for querying this kind of data because they match patterns of triples in the RDF graph. SPARQL allows you to filter, sort, group, and manipulate RDF data to obtain meaningful insights.
+SPARQL queries are well-suited for querying this kind of data because they match patterns of triples in the RDF graph. With SPARQL, you can filter, sort, group, and manipulate RDF data to obtain meaningful insights.
 
 ## RDF Data Structure
 
@@ -37,7 +37,7 @@ The RDF data in this project is structured using the `schema1` namespace, which 
     schema1:name "Reverie" .
 ```
 
-This RDF triple represents:
+This RDF triple shows:
 - A track identified by `<spotify:track:07QlP7twNI81IsqhKLFiER>`.
 - It is a music recording (`a schema1:MusicRecording`).
 - It is associated with an artist (`schema1:byArtist`), has a duration (`schema1:duration`), belongs to an album (`schema1:inAlbum`), and has a name (`schema1:name`).
@@ -47,101 +47,165 @@ This RDF triple represents:
 Here are some examples of the SPARQL queries used in this project, along with explanations of why they are SPARQL queries:
 
 1. **Get the Total Number of Songs**:
+
+    Here is the full function in Python:
+
+    ```python
+    def get_total_songs():
+        query = """
+        SELECT (COUNT(?track) AS ?totalSongs)
+        WHERE {
+            ?track a schema1:MusicRecording.
+        }
+        """
+        results = g.query(query)
+        for row in results:
+            print(f"Total Number of Songs: {row.totalSongs}")
+    ```
+
+    Here is the specific query logic:
+
     ```sparql
     SELECT (COUNT(?track) AS ?totalSongs)
     WHERE {
-        ?track a schema1:MusicRecording .
+        ?track a schema1:MusicRecording.
     }
     ```
-    - This query counts all tracks that are classified as `schema1:MusicRecording`. The `SELECT` clause retrieves the count, and the `WHERE` clause specifies the pattern for matching the triples.
+
+    - This query counts all tracks that are classified as `schema1:MusicRecording`. The `SELECT` clause retrieves the total count of tracks that match the specified pattern, while the `WHERE` clause identifies each track as a `schema1:MusicRecording`.
 
 2. **Get the Total Playlist Duration**:
+
+    Here is the full function in Python:
+
+    ```python
+    def get_total_duration():
+        query = """
+        SELECT ?duration
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:duration ?duration.
+        }
+        """
+        total_duration_seconds = 0
+        results = g.query(query)
+        for row in results:
+            minutes, seconds = map(int, row.duration.split(":"))
+            total_duration_seconds += minutes * 60 + seconds
+
+        total_minutes = total_duration_seconds // 60
+        total_seconds = total_duration_seconds % 60
+        print(f"Total Playlist Duration: {total_minutes} minutes, {total_seconds} seconds")
+    ```
+
+    Here is the specific query logic:
+
     ```sparql
     SELECT ?duration
     WHERE {
-        ?track a schema1:MusicRecording ;
-               schema1:duration ?duration .
+        ?track a schema1:MusicRecording;
+            schema1:duration ?duration.
     }
     ```
-    - This query retrieves the `duration` for all tracks and calculates the total playlist duration. The `WHERE` clause matches triples where the subject is a music recording and has a `schema1:duration` predicate.
+
+    - This query retrieves the `duration` of all tracks. The `WHERE` clause matches triples where the subject is a music recording with a `schema1:duration` predicate, allowing the calculation of the total playlist duration.
 
 3. **Get Songs Grouped by Artist**:
+
+    Here is the full function in Python:
+
+    ```python
+    def get_songs_grouped_by_artist():
+        query = """
+        SELECT ?artistName ?songTitle
+        WHERE {
+            ?track a schema1:MusicRecording;
+                schema1:name ?songTitle;
+                schema1:byArtist ?artist.
+            ?artist schema1:name ?artistName.
+        }
+        ORDER BY ?artistName
+        """
+        results = g.query(query)
+
+        # Grouping songs by artist
+        artist_songs = defaultdict(list)
+        for row in results:
+            artist_songs[row.artistName].append(row.songTitle)
+
+        # Outputting results
+        for artist, songs in artist_songs.items():
+            print(f"{artist}:")
+            for song in songs:
+                print(f" - {song}")
+            print()  # Blank line for readability
+    ```
+
+    Here is the specific query logic:
+
     ```sparql
     SELECT ?artistName ?songTitle
     WHERE {
-        ?track a schema1:MusicRecording ;
-               schema1:name ?songTitle ;
-               schema1:byArtist ?artist .
-        ?artist schema1:name ?artistName .
+        ?track a schema1:MusicRecording;
+            schema1:name ?songTitle;
+            schema1:byArtist ?artist.
+        ?artist schema1:name ?artistName.
     }
     ORDER BY ?artistName
     ```
-    - This query retrieves songs and groups them by artist. The results are ordered by artist name, making it easy to see all songs associated with each artist.
 
-## Running the Queries
+    - This query retrieves songs and groups them by artist. The `SELECT` clause pulls both the artist name and song title, while the `WHERE` clause specifies the relationships needed to match the artist and song data. The `ORDER BY` clause sorts the results by artist name, making it easy to see all songs associated with each artist in alphabetical order.
 
-To run any of the SPARQL queries, use the following command:
+## Examples
 
-```bash
-python3 sparql.py --query <query_name> [--additional_options]
-```
-
-For example, to get the total number of songs, run:
-
+### Example 1: Get the Total Number of Songs
 ```bash
 python3 sparql.py --query total_songs
 ```
 
-To list songs longer than 4 minutes:
-
-```bash
-python3 sparql.py --query longer_than --min_duration "4:00"
+**Output**:
+```
+Total Number of Songs: 55
 ```
 
-## Examples
+### Example 2: Get the Total Playlist Duration
+```bash
+python3 sparql.py --query duration
+```
 
-### Example 1: Get Songs Grouped by Artist
+**Output**:
+```
+Total Playlist Duration: 207 minutes, 29 seconds
+```
+
+### Example 3: Get Songs Grouped by Artist
 ```bash
 python3 sparql.py --query artist
 ```
 
 **Output**:
 ```
-The Killers:
- - Shot At The Night
- - Somebody Told Me
- - Read My Mind
+ Daft Punk:
+ - Instant Crush
+ - Lose Yourself to Dance
 
 Pharrell Williams:
  - Get Lucky
  - Happy
-```
 
-### Example 2: Get Artists Sorted by Most Appearances
-```bash
-python3 sparql.py --query by_appearance
-```
-
-**Output**:
-```
-1. The Weeknd: 5 songs
-2. Imagine Dragons: 3 songs
-3. Daft Punk: 2 songs
+ The Killers:
+ - Shot At The Night
+ - Somebody Told Me
+ - Read My Mind
 ```
 
 ## Setup Instructions
 
-1. **Clone the Repository**:
-   ```bash
-   git clone <repository_url>
-   cd <repository_directory>
-   ```
-
-2. **Install Dependencies**:
+1. **Install Dependencies**:
    Make sure you have `rdflib` installed:
    ```bash
    pip install rdflib
    ```
 
-3. **Run the Queries**:
+X. **Run the Queries**:
    Use the `python3 sparql.py --query <query_name>` command to run any of the supported queries.
