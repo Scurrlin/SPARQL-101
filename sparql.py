@@ -1,5 +1,6 @@
 import argparse
 from rdflib import Graph
+from collections import defaultdict
 
 g = Graph()
 g.parse("wedding_playlist.rdf", format="turtle")
@@ -72,8 +73,8 @@ def get_songs_sorted_by_length():
     ORDER BY DESC(?duration)
     """
     results = g.query(query)
-    for row in results:
-        print(f"{row.songTitle}: {row.duration}")
+    for index, row in enumerate(results, start=1):
+        print(f"{index}. {row.songTitle}: {row.duration}")
 
 # 4.) Get the longest song in the playlist
 # CLI Command: python3 sparql.py --query longest
@@ -123,10 +124,11 @@ def get_songs_longer_than(duration):
             schema1:duration ?duration.
         FILTER (?duration > "{duration}")
     }}
+    ORDER BY DESC(?duration)
     """
     results = g.query(query)
-    for row in results:
-        print(f"{row.songTitle}: {row.duration}")
+    for index, row in enumerate(results, start=1):
+        print(f"{index}. {row.songTitle}: {row.duration}")
 
 # 7. Get songs grouped by album
 # CLI Command: python3 sparql.py --query album
@@ -143,8 +145,17 @@ def get_songs_grouped_by_album():
     ORDER BY ?albumTitle
     """
     results = g.query(query)
+
+    album_songs = defaultdict(list)
+
     for row in results:
-        print(f"{row.albumTitle}: {row.songTitle}")
+        album_songs[row.albumTitle].append(row.songTitle)
+
+    for album, songs in album_songs.items():
+        print(f"{album}:")
+        for song in songs:
+            print(f" - {song}")
+        print()
 
 # 8. Get songs grouped by artist
 # CLI Command: python3 sparql.py --query artist
@@ -161,8 +172,17 @@ def get_songs_grouped_by_artist():
     ORDER BY ?artistName
     """
     results = g.query(query)
+
+    artist_songs = defaultdict(list)
+
     for row in results:
-        print(f"{row.artistName}: {row.songTitle}")
+        artist_songs[row.artistName].append(row.songTitle)
+
+    for artist, songs in artist_songs.items():
+        print(f"{artist}:")
+        for song in songs:
+            print(f" - {song}")
+        print()
 
 # 9. Get artists sorted by most appearances in descending order
 # CLI Command: python3 sparql.py --query by_appearance
@@ -179,8 +199,8 @@ def get_artists_by_appearance():
     ORDER BY DESC(?numSongs)
     """
     results = g.query(query)
-    for row in results:
-        print(f"{row.artistName}: {row.numSongs} songs")
+    for index, row in enumerate(results, start=1):
+        print(f"{index}. {row.artistName}: {row.numSongs} songs")
 
 # 10. Get all songs by a specific artist (manual input)
 # CLI Command: python3 sparql.py --query by_artist
