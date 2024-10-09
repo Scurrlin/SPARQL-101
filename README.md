@@ -173,8 +173,9 @@ python3 sparql.py --query duration
 ```
 
 **Output**:
-
+```
 Total Playlist Duration: 207 minutes, 29 seconds
+```
 
 ### Example 3: Get Songs Grouped by Artist
 ```bash
