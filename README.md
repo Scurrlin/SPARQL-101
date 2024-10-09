@@ -71,7 +71,7 @@ Here are some examples of the SPARQL queries used in this project, along with ex
     }
     ```
 
-    - This query counts all tracks that are classified as `schema1:MusicRecording`. The `SELECT` clause retrieves the total count of tracks that match the specified pattern, while the `WHERE` clause identifies each track as a `schema1:MusicRecording`.
+    This query counts all tracks that are classified as `schema1:MusicRecording`. The `SELECT` clause retrieves the total count of tracks that match the specified pattern, while the `WHERE` clause identifies each track as a `schema1:MusicRecording`.
 
 2. **Get the Total Playlist Duration**:
 
@@ -107,7 +107,7 @@ Here are some examples of the SPARQL queries used in this project, along with ex
     }
     ```
 
-    - This query retrieves the `duration` of all tracks. The `WHERE` clause matches triples where the subject is a music recording with a `schema1:duration` predicate, allowing the calculation of the total playlist duration.
+    This query retrieves the `duration` of all tracks. The `WHERE` clause matches triples where the subject is a music recording with a `schema1:duration` predicate, allowing the calculation of the total playlist duration.
 
 3. **Get Songs Grouped by Artist**:
 
@@ -153,7 +153,7 @@ Here are some examples of the SPARQL queries used in this project, along with ex
     ORDER BY ?artistName
     ```
 
-    - This query retrieves songs and groups them by artist. The `SELECT` clause pulls both the artist name and song title, while the `WHERE` clause specifies the relationships needed to match the artist and song data. The `ORDER BY` clause sorts the results by artist name, making it easy to see all songs associated with each artist in alphabetical order.
+    This query retrieves songs and groups them by artist. The `SELECT` clause pulls both the artist name and song title, while the `WHERE` clause specifies the relationships needed to match the artist and song data. The `ORDER BY` clause sorts the results by artist name, making it easy to see all songs associated with each artist in alphabetical order.
 
 ## Running the Queries
 
@@ -176,6 +176,10 @@ python3 sparql.py --query duration
 ```
 Total Playlist Duration: 207 minutes, 29 seconds
 ```
+
+**Output**:
+
+<pre><code>Total Number of Songs: 55</code></pre>
 
 ### Example 3: Get Songs Grouped by Artist
 ```bash
