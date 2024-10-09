@@ -208,7 +208,7 @@ Pharrell Williams:
    ```
 
 2. **Setting up Environment Variables**:
-    Once you've installed the necessary dependencies, you'll need to set up your environment variables. Create a new file named `.env` in the root of your project and add the following four variables. Don't forget to include them in your `.gitignore`!
+    After you've installed the necessary dependencies, you'll need to set up your environment variables. Create a new file named `.env` in the root of your project and add the following four variables. Don't forget to include them in your `.gitignore`!
 
     ```env
     SPOTIFY_CLIENT_ID=
@@ -256,3 +256,76 @@ Pharrell Williams:
     ```
     1234asdf1234ASDF1234asd
     ```
+
+3. **Connecting to the Spotify API**:
+    Once you have all of your environment variables set, it's time to connect to the Spotify API. To do so, create a new file in your directory called `playlist_data.py` and paste in the code snippet below:
+
+    <details>
+    <summary><code>playlist_data.py</code></summary>
+
+    ```python
+    import spotipy
+    from spotipy.oauth2 import SpotifyOAuth
+    from dotenv import load_dotenv
+    import os
+
+    load_dotenv()
+
+    SPOTIFY_CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
+    SPOTIFY_CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
+    SPOTIFY_REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI')
+    SPOTIFY_PLAYLIST_ID = os.getenv('SPOTIFY_PLAYLIST_ID')
+
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
+        client_id=SPOTIFY_CLIENT_ID,
+        client_secret=SPOTIFY_CLIENT_SECRET,
+        redirect_uri=SPOTIFY_REDIRECT_URI,
+        scope="playlist-read-private"
+    ))
+
+    playlist = sp.playlist(SPOTIFY_PLAYLIST_ID)
+
+    print(f"Playlist Name: {playlist['name']}")
+    print(f"Total Tracks: {playlist['tracks']['total']}")
+
+    def convert_duration(duration_ms):
+        minutes = duration_ms // 60000
+        seconds = (duration_ms % 60000) // 1000
+        return f"{minutes}:{seconds:02d}"
+
+    for track in playlist['tracks']['items']:
+        track_info = track['track']
+        track_duration = convert_duration(track_info['duration_ms'])
+        print(f"Track Name: {track_info['name']}")
+        print(f"Artist: {track_info['artists'][0]['name']}")
+        print(f"Album: {track_info['album']['name']}")
+        print(f"Duration: {track_duration}")
+        print('---')
+    ```
+
+    </details>
+
+    After you've created this file, open a new termianl and run the following command:
+    ```bash
+    python3 playlist_data.py
+    ```
+
+    If you successfully connected to the Spotify API, you should see something similar to the following output in your terminal:
+    ```bash
+    Playlist Name: Your Playlist
+    Total Tracks: 20
+    Track Name: Track 1
+    Artist: Artist 1
+    Album: Album 1
+    Duration: 3:00
+    ---
+    Track Name: Track 2
+    Artist: Artist 2
+    Album: Album 2
+    Duration: 4:00
+    ---
+    ```
+
+    Now that you have established your connection to the Spotify API, it's time to transform the metadata into an RDF file.
+
+4. **RDF Conversion**:
