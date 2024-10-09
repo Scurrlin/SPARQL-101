@@ -201,10 +201,26 @@ Pharrell Williams:
 ## Setup Instructions
 
 1. **Install Dependencies**:
-   Make sure you have `rdflib` installed:
+   Make sure you have the following dependencies installed:
+
    ```bash
-   pip install rdflib
+   pip3 install rdflib spotipy python-dotenv
    ```
 
-X. **Run the Queries**:
-   Use the `python3 sparql.py --query <query_name>` command to run any of the supported queries.
+2. **Setting up Environment Variables**:
+    Once you've installed the necessary dependencies, you'll need to set up your environment variables. Create a new file named `.env` in the root of your project and add the following four variables. Don't forget to include them in your `.gitignore`!
+
+    ```env
+    SPOTIFY_CLIENT_ID=
+    SPOTIFY_CLIENT_SECRET=
+    SPOTIFY_REDIRECT_URI=
+    SPOTIFY_PLAYLIST_ID=
+    ```
+
+    The `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET` can be accessed by visiting the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/).
+
+    ![Dashboard](./assets/dev_dashboard.jpg)
+
+    From here, click on the `Create app` button in the top right corner. Unsurprisingly, this will take you to the **Create app** page.
+
+    ![Create_app](./assets/create_app.jpg)
