@@ -20,7 +20,7 @@ SPARQL is a powerful language specifically designed for querying RDF data. RDF i
 - **Predicate**: The property or characteristic of the resource (e.g., the track's duration or its artist).
 - **Object**: The value of the property (e.g., "4:02" or "The Killers").
 
-SPARQL queries are well-suited for querying this kind of data because they match patterns of triples in the RDF graph. With SPARQL, you can filter, sort, group, and manipulate RDF data to obtain meaningful insights.
+SPARQL is well-suited for querying this kind of data because they match patterns of triples in the RDF graph. With SPARQL, you can filter, sort, group, and manipulate RDF data to obtain meaningful insights.
 
 ## RDF Data Structure
 
@@ -398,7 +398,7 @@ Pharrell Williams:
 
     </details>
 
-    If you successfully ran the `rdf_schema.py` script, you should a new `your_playlist.rdf` file appear in your directory.
+    If you successfully ran the `rdf_schema.py` script, you should see a new `your_playlist.rdf` file appear in your directory.
 
 5. **Analyzing your playlist data with SPARQL**:
 
