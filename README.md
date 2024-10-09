@@ -245,4 +245,14 @@ Pharrell Williams:
 
     Before clicking the `Save` button, be sure to indicate that you intend to use the `Web API` below the Redirect URIs field. Once you have saved your information, you will land on your app's home page. From here, click on the `Settings` button in the top right corner. This will take you to the `Basic Information` page where you will find your `SPOTIFY_CLIENT_ID` and `SPOTIFY_CLIENT_SECRET`.
 
-    The last piece of data you will need is the `SPOTIFY_PLAYLIST_ID`
+    The last piece of data you will need is the `SPOTIFY_PLAYLIST_ID`. This environment variable is actually the URI for the playlist you want to analyze. To obtain this information, navigate to said playlist on Spotify and copy the URL. It should look something like this:
+
+    ```
+    https://open.spotify.com/playlist/1234asdf1234ASDF1234asd
+    ```
+
+    The character string at the end of this URL address is your `SPOTIFY_PLAYLIST_ID`. In the case of the example above, it would be this:
+
+    ```
+    1234asdf1234ASDF1234asd
+    ```
