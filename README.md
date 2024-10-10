@@ -38,7 +38,7 @@ The RDF data in this project is structured using the `schema1` namespace, which 
 
 This RDF triple shows:
 - A track identified by `<spotify:track:07QlP7twNI81IsqhKLFiER>`.
-- It is a music recording (`a schema1:MusicRecording`).
+- It is a music recording (`schema1:MusicRecording`).
 - It is associated with an artist (`schema1:byArtist`), has a duration (`schema1:duration`), belongs to an album (`schema1:inAlbum`), and has a name (`schema1:name`).
 
 ## SPARQL Queries Used
