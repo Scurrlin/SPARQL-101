@@ -4,7 +4,7 @@ There is nothing better than a carefully curated playlist to help you stay focus
 
 However, there is another hidden benefit to great playlists: they are perfect subjects for ETL projects!
 
-In this repository, I cover the entire process of extracting Spotify metadata from my wedding reception playlist, transforming it into RDF triples (subject-predicate-object), and finally loading the data as an RDF file that can be queried using SPARQL. I've also included istructions for how you can repeat this process on your own with any playlist of your choosing.
+In this repository, I cover the entire process of extracting Spotify metadata from my wedding reception playlist, transforming it into RDF triples (subject-predicate-object), and finally loading the data as an RDF file that can be queried using SPARQL. I've also included instructions for how you can repeat this process on your own with any playlist of your choosing.
 
 ## Table of Contents
 1. [Why SPARQL?](#why-sparql)
