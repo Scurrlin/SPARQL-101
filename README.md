@@ -261,7 +261,7 @@ Pharrell Williams:
 
 3. **Connecting to the Spotify API**:
 
-    Once you have all of your environment variables set, it's time to connect to the Spotify API. To do so, create a new file in your directory called `playlist_data.py` and paste in the code snippet below:
+    Once you have all of your environment variables set, it's time to connect to the Spotify API. To do so, create a new file in your project called `playlist_data.py` and paste in the code snippet below:
 
     <details>
     <summary><code>playlist_data.py</code></summary>
@@ -308,7 +308,7 @@ Pharrell Williams:
 
     </details>
 
-    After you've created this file, open a new termianl and run the following command:
+    After you've created this file, open a new terminal and run the following command:
     ```bash
     python3 playlist_data.py
     ```
@@ -333,7 +333,7 @@ Pharrell Williams:
 
 4. **RDF Conversion**:
 
-    To convert the Spotify playlist data into an RDF file, you'll need to create a new file in your directory called `rdf_schema.py`. Within that file, paste in the code snippet below:
+    To convert the Spotify playlist data into an RDF file, you'll need to create a new file in your project called `rdf_schema.py`. Within that file, paste in the code snippet below:
 
     <details>
     <summary><code>playlist_data.py</code></summary>
@@ -402,7 +402,7 @@ Pharrell Williams:
 
 5. **Analyzing your playlist data with SPARQL**:
 
-    We are finally ready to start running SPARQL queries! First, create one last file in your directory called `sparql.py`. You can copy and paste in the same code that I have in my `sparql.py` file, but I encourage you to come up with your own queries as well!
+    We are finally ready to start running SPARQL queries! First, create one last file in your project called `sparql.py`. You can copy and paste in the same code that I have in my `sparql.py` file, but I encourage you to come up with your own queries as well!
 
     <details>
     <summary><code>sparql.py</code></summary>
