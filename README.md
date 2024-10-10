@@ -336,7 +336,7 @@ Pharrell Williams:
     To convert the Spotify playlist data into an RDF file, you'll need to create a new file in your project called `rdf_schema.py`. Within that file, paste in the code snippet below:
 
     <details>
-    <summary><code>playlist_data.py</code></summary>
+    <summary><code>rdf_schema.py</code></summary>
 
     ```python
     import spotipy
