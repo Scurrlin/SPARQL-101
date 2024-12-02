@@ -1,5 +1,7 @@
 # Spotify SPARQL Queries
 
+![banner_image](assets/SPARQL-101.jpg)
+
 There is nothing better than a carefully curated playlist to help you stay focused when coding. Some of my personal favorite artists to listen to in this capacity are [A.L.I.S.O.N](https://open.spotify.com/artist/3gi5McAv9c0qTjJ5jSmbL0), [Jasper de Ceuster](https://open.spotify.com/artist/4E653XDFNhfX7sIlJWCiwb) (specifically his [Memory Bank](https://open.spotify.com/album/0D9t03mcMVQpnToulPQFd7) album), and [Lofi Girl](https://open.spotify.com/user/chilledcow).
 
 However, there is another hidden benefit to great playlists: they are perfect subjects for ETL projects!
